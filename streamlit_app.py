@@ -4,6 +4,8 @@ import numpy as np
 
 st.title('Uber pickups in NYC')
 
+FILE_TYPES = ["csv", "py", "png", "jpg"]
+
 file = st.file_uploader("Upload file", type=FILE_TYPES)
 show_file = st.empty()
 if not file:
