@@ -4,6 +4,12 @@ import numpy as np
 
 st.title('Uber pickups in NYC')
 
+file = st.file_uploader("Upload file", type=FILE_TYPES)
+show_file = st.empty()
+if not file:
+    show_file.info("Please upload a file of type: " + ", ".join(FILE_TYPES))
+return
+
 DATE_COLUMN = 'date/time'
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
             'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
