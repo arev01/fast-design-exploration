@@ -63,7 +63,7 @@ if in_file:
             st.markdown("---")
             
         if st.checkbox("Show histogram"):
-            target=st.selectbox("Select target", df.drop(params, axis=1).columns.values, key="target"))
+            target=st.selectbox("Select target", df.drop(params, axis=1).columns.values, key="target")
             
             # feature_importance
             X=np.array(df_updated[params])
