@@ -48,8 +48,8 @@ if in_file:
 
     if len(params) > 0:
         if st.checkbox("Show scatter plot"):
-            paramx1=st.selectbox("Select parameter for x-axis", df_updated.columns.tolist())
-            paramy1=st.selectbox("Select parameter for y-axis", df_updated.columns.tolist())
+            paramx1=st.selectbox("Select parameter for x-axis", options=df.columns.values, key="paramx1")
+            paramy1=st.selectbox("Select parameter for y-axis", options=df.columns.values, key="paramy1")
 
             trace11=go.Scatter(x=df[paramx1], y=df[paramy1], name="full dataset", mode="markers", marker=dict(color="blue",size=10))
             fig1=go.Figure(data=trace11)
@@ -63,7 +63,7 @@ if in_file:
             st.markdown("---")
             
         if st.checkbox("Show histogram"):
-            target=st.selectbox("Select target", df_updated.drop(params, axis=1).columns.to_list())
+            target=st.selectbox("Select target", df.drop(params, axis=1).columns.values, key="target"))
             
             # feature_importance
             X=np.array(df_updated[params])
