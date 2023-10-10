@@ -30,6 +30,8 @@ if in_file:
     if st.checkbox("Show raw data"):
         st.write(df)
 
+        st.markdown("---")
+
     params=st.multiselect("Select parameters", df.columns.tolist())
 
     if len(params) > 0:
