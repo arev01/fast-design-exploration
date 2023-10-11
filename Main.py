@@ -37,6 +37,12 @@ st.markdown(
     """
 )
 
+if "separator" not in st.session_state:
+    st.session_state["separator"] = ","
+    
+if "decimal" not in st.session_state:
+    st.session_state["decimal"] = "."
+
 in_file=st.file_uploader("Upload file", type="csv")
 
 if in_file:
