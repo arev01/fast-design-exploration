@@ -91,7 +91,7 @@ if in_file:
                             df_updated.loc[len(df_updated.index)]=df_sorted.iloc[i].tolist()
 
     if st.checkbox("Show raw data"):
-        st.dataframe(df)
+        st.write(df)
 
         st.markdown("---")
     
