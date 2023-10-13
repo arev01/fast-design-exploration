@@ -26,3 +26,12 @@ decimal = st.selectbox("Select the decimal separator", options=[
 
 if decimal == ",":
     st.session_state["decimal"] = ","
+
+settings = st.selectbox("Select the setting option", options=[
+    "Basic", 
+    "Advanced"
+    ], 
+    key="select_settings")
+
+if settings == "Advanced":
+    st.session_state["settings"] = "Advanced"
