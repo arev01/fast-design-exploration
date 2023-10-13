@@ -43,6 +43,9 @@ if "separator" not in st.session_state:
 if "decimal" not in st.session_state:
     st.session_state["decimal"] = "."
 
+if "settings" not in st.session_state:
+    st.session_state["settings"] = "Basic"
+
 in_file=st.file_uploader("Upload file", type="csv")
 
 if in_file:
