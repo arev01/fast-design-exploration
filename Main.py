@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
-from st_pages import Page, show_pages, add_page_title
+#from st_pages import Page, show_pages, add_page_title
 
 from Read_Write_CSV import *
 
@@ -17,13 +17,13 @@ st.set_page_config(
 
 # Specify what pages should be shown in the sidebar, and what their titles 
 # and icons should be
-show_pages(
-    [
-        Page("Main.py", "Home", "🏠"),
-        Page("pages/1_Help.py", "Help", ":question:"),
-        Page("pages/2_Config.py", "Config", ":gear:"),
-    ]
-)
+#show_pages(
+#    [
+#        Page("Main.py", "Home", "🏠"),
+#        Page("pages/1_Help.py", "Help", ":question:"),
+#        Page("pages/2_Config.py", "Config", ":gear:"),
+#    ]
+#)
 
 st.write("# Fast Design Exploration")
 
