@@ -65,6 +65,9 @@ if in_file:
         
         # Get the cluster labels and add them to the original DataFrame
         df['cluster_label'] = kmeans.labels_
+
+        # Get the min distances between elements and cluster centers
+        df['cluster_distance'] = np.min(kmeans.transform(X_scaled), 1)
         
         st.markdown("---")
 
