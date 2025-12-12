@@ -47,7 +47,12 @@ if in_file:
     if csv_file:
         dict_vars=read_variables_csv(csv_file)
         df=pd.DataFrame(dict_vars)
-        
+
+        if st.checkbox("Show raw data"):
+            st.write(df)
+
+            st.markdown("---")
+
         st.write("### Clustering")
         
         # Select features for clustering
@@ -112,11 +117,6 @@ if in_file:
 
                         if all(bool_lst):
                                 df_updated.loc[len(df_updated.index)]=df_sorted.iloc[i].tolist()
-
-        if st.checkbox("Show raw data"):
-            st.write(df)
-
-            st.markdown("---")
 
         st.write("### Scatter plot")
         
