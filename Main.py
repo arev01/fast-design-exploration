@@ -47,6 +47,27 @@ if in_file:
     if csv_file:
         dict_vars=read_variables_csv(csv_file)
         df=pd.DataFrame(dict_vars)
+        
+        st.write("### Clustering")
+        
+        # Select features for clustering
+        features = st.multiselect("Choose columns to use for clustering", options=df.columns.values)
+        X = df[features]
+        
+        # Scale the data (optional)
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+        
+        # Apply the K-Means algorithm
+        k = st.number_input("Specify the number of clusters", min_value=1, max_value=10)
+        kmeans = KMeans(n_clusters=k, random_state=42, n_init=10) # n_init is set to 10 for current sklearn versions
+        kmeans.fit(X_scaled)
+        
+        # Get the cluster labels and add them to the original DataFrame
+        df['cluster_label'] = kmeans.labels_
+        
+        st.markdown("---")
+
         df_updated=df.copy()
 
         key_lst=st.sidebar.multiselect("Choose filters", options=df.columns.values)
@@ -93,7 +114,7 @@ if in_file:
             st.write(df)
 
             st.markdown("---")
-        
+
         st.write("### Scatter plot")
         
         p_x1=st.selectbox("Select parameter for x-axis", options=df.columns.values, key="p_x1")
@@ -109,29 +130,6 @@ if in_file:
             fig1.add_trace(trace21)
 
         st.plotly_chart(fig1)#, use_container_width=True)
-
-        st.markdown("---")
-
-        st.write("### Clustering")
-        
-        # Select features for clustering
-        features = st.multiselect("Choose columns to use for clustering", options=df.columns.values)
-        X = df[features]
-        
-        # Scale the data (optional)
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X)
-        
-        # Apply the K-Means algorithm
-        k = st.number_input("Specify the number of clusters", min_value=1, max_value=10)
-        kmeans = KMeans(n_clusters=k, random_state=42, n_init=10) # n_init is set to 10 for current sklearn versions
-        kmeans.fit(X_scaled)
-        
-        # Get the cluster labels and add them to the original DataFrame
-        df['cluster_label'] = kmeans.labels_
-        
-        st.write("\nDataFrame with Clusters:")
-        st.write(df)
 
         st.markdown("---")
 
